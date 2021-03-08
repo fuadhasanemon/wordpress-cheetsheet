@@ -1,11 +1,11 @@
 ## Translations can be filed in the /languages/ directory.
 
-``` function neuron_theme_suports() {  
-   load_theme_textdomain( 'neuron-f', get_template_directory() . '/languages' ); ```
+`   function neuron_theme_suports() {  
+   load_theme_textdomain( 'neuron-f', get_template_directory() . '/languages' );`
 
  ## Add default posts and comments RSS feed links to head.
  
-   ``` add_theme_support( 'automatic-feed-links' ); ```
+    add_theme_support( 'automatic-feed-links' ); 
 
     ## Let WordPress manage the document title.
     ``` add_theme_support( 'title-tag' ); ```
