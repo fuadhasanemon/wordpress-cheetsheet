@@ -1,25 +1,26 @@
-``` function neuron_theme_suports() {
+## Translations can be filed in the /languages/ directory.
 
-    ## Translations can be filed in the /languages/ directory.
-    load_theme_textdomain( 'neuron-f', get_template_directory() . '/languages' ); 
+``` function neuron_theme_suports() {  
+   load_theme_textdomain( 'neuron-f', get_template_directory() . '/languages' ); ```
 
-    ## Add default posts and comments RSS feed links to head.
-    add_theme_support( 'automatic-feed-links' ); 
+ ## Add default posts and comments RSS feed links to head.
+ 
+   ``` add_theme_support( 'automatic-feed-links' ); ```
 
     ## Let WordPress manage the document title.
-     add_theme_support( 'title-tag' ); 
+    ``` add_theme_support( 'title-tag' ); ```
 
     ## Enable support for Post Thumbnails on posts and pages.
-    add_theme_support( 'post-thumbnails' );
+    ```add_theme_support( 'post-thumbnails' );```
 
     ## This theme uses wp_nav_menu() in one location.
-	register_nav_menus(
+	```register_nav_menus(
 		array(
 			'menu-2' => esc_html__( 'Primary', 'neuron-f' ),
-			) );
+			) );```
 
     ## to output valid HTML5.
-    add_theme_support(
+   ``` add_theme_support(
                 'html5',
                 array(
                     'search-form',
@@ -29,13 +30,13 @@
                     'caption',
                     'style',
                     'script',
-                ) ); 
+                ) ); ```
     
     ## Add theme support for selective refresh for widgets.
-       add_theme_support( 'customize-selective-refresh-widgets' );
+      ``` add_theme_support( 'customize-selective-refresh-widgets' );```
     
     ## support for core custom logo.
-       add_theme_support(
+       ```add_theme_support(
         'custom-logo',
         array(
             'height'      => 250,
@@ -47,13 +48,13 @@
     }
 
     add_action('after_setup_theme', 'neuron_theme_suports' );
-
+```
 
 
 
 
     ## Custom Post For WP
-    function neuron_custom_post() {
+   ``` function neuron_custom_post() {
         register_post_type('slide',
             array(
                 'labels'      => array(
@@ -69,3 +70,20 @@
 
     add_action('init', 'neuron_custom_post');
     ```
+
+## custom Slider
+``` <?php
+                        global $post;
+                        $args = array('posts_per_page' => 7, 'post_type' => 'slide', 'orderby' => 'menu_order', 'order' => 'ASC');
+                        $myposts = get_posts($args);
+                        foreach ($myposts as $indexpost => $post) : setup_postdata($post); ?>
+			
+			<img src="<?php the_post_thumbnail_url('large'); ?>" alt="" data-bgposition="bottom">
+			<p class="h_title"><?php the_title() ?> </p>
+			<?php the_content(); ?>
+					<?php
+                        endforeach;
+                        wp_reset_query();
+                        ?>
+```				
+									
