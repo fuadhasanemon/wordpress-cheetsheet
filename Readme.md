@@ -106,4 +106,22 @@
     <?php endforeach; wp_reset_query(); ?>
     
     ````
+    
+    ```
+    ### WP QUERY CUSTOM POST
+    <?php
+        $wpnew=array(
+            'post_type' => 'slides',
+            'post_status' => 'publish'
+        );
+
+        $newsquery=new WP_Query($wpnew);
+        while($newsquery->have_posts()) {
+            $newsquery->the_post();
+            $imagepath=wp_get_attachment_image_src(
+                get_post_thumbnail_id(), 'large'
+            );
+        }
+        ?>
+```
 									
