@@ -105,9 +105,9 @@
 
     <?php endforeach; wp_reset_query(); ?>
     
-    ````
-    
     ```
+    
+```
     ### WP QUERY CUSTOM POST
     <?php
         $wpnew=array(
