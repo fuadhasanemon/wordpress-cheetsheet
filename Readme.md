@@ -85,5 +85,22 @@
                         endforeach;
                         wp_reset_query();
                         ?>
-```				
+```		
+
+``` Loop custom post type
+  <?php
+    global $post;
+    $args = array( 'post_per_page' => -1, 'post_type' => 'posttype', 'orderby' => 'menu_order', 'order' => 'ASC');
+    $myposts = get_posts( $args );
+    foreach( $myposts as $post ) : setup_postdata($post); ?>
+
+    <?php 
+        $custom_link = get_post_meta( $post -> id,  $single -> true );
+    ?>
+    <h2><?php the_title( ); ?></h2>
+    <?php the_content(); ?>
+
+    <?php endforeach; wp_reset_query();?>
+    
+    ````
 									
